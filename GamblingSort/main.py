@@ -1,4 +1,3 @@
-import secrets
 import random
 
 
@@ -8,21 +7,14 @@ def gambling_sort(arr):
     def sort_check(arr):
         if n < 2:
             return True
-        for i in range(len(arr) - 1):
+        for i in range(n - 1):
             if arr[i] > arr[i + 1]:
                 return False
-        print(arr)
         return True
     while not sort_check(arr):
-        for j in range(n):
-            first_num = secrets.choice(arr)
-            second_num = secrets.choice(arr)
-            if arr.index(first_num) == arr.index(second_num):
-                continue
-            i, j = arr.index(first_num), arr.index(second_num)
-            arr[i], arr[j] = arr[j], arr[i]
-            print(arr)
-    return arr
+        i, j = random.sample(range(n), 2)
+        arr[i], arr[j] = arr[j], arr[i]
+        print(arr)
 
 
 if __name__ == "__main__":
